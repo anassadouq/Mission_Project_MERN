@@ -1,14 +1,19 @@
 // sadouqanas1@gmail.com
 
 const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-
 const app = express();
+const cors = require('cors');
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect("mongodb+srv://sadouqanas1:00nLXBR8kgHhX7Ag@cluster0.mtjdktz.mongodb.net/mission?retryWrites=true&w=majority")
+
+// CONNECT TO DB
+const   userName = "sadouqanas1",
+        password = process.env.PASSWORD,
+        database = "mission";
+
+const mongoose = require('mongoose');
+mongoose.connect(`mongodb+srv://${userName}:${password}@cluster0.mtjdktz.mongodb.net/${database}?retryWrites=true&w=majority`)
 
 const MissionsModel = require('./models/Missions')
 
