@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { LuEdit } from 'react-icons/lu';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { BiAddToQueue } from 'react-icons/bi';
+import Logout from "../Header/Logout";
 
 export default function Liste() {
   const [mission, setMission] = useState([]);
@@ -45,6 +46,7 @@ export default function Liste() {
 
   return (
     <div className="container">
+      <Logout/>
       <Link to='/create'>
         <button className="btn btn-warning my-3"><BiAddToQueue/> Mission</button>
       </Link>
