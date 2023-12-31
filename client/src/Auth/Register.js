@@ -26,40 +26,32 @@ export default function Register() {
     };
 
     return (
-        <div>
+        <div className="container my-3">
             <Header/>
-            <h1 className="text-center">
-                <b>Register</b>
-            </h1>
-            <center className="my-5">
-                <table>
-                    <tr>
-                        <td>
-                            <b>First Name</b>
-                        </td>
-                        <td><input type="text" className="my-3" placeholder="First Name" onChange={(e) => setName(e.target.value)}/></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <b>Email</b>
-                        </td>
-                        <td><input type="email" className="my-3" placeholder="example@gmail.com" onChange={(e) => setEmail(e.target.value)}/></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <b>Password</b>
-                        </td>
-                        <td><input type="password" className="my-3" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/></td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <b>Confirm Password</b>
-                        </td>
-                        <td><input type="password" className="my-3" placeholder="Confirm Password" onChange={(e) => setConfirmPassword(e.target.value)}/></td>
-                        <td><button className="mx-2 btn btn-primary" onClick={register} disabled={isDisabled()}>Register</button></td>
-                    </tr>
-                </table>
-            </center>
+            <div className="my-4 card mx-auto" style={{ maxWidth: '600px' }}>
+                <div className="card-body">
+                    <h1 className="text-center">Register</h1>
+                    <div className="form-group">
+                        <b>First Name</b>
+                        <input type="text" className="form-control my-3" placeholder="First Name" onChange={(e) => setName(e.target.value)}/>
+                    </div>
+                    <div className="form-group">
+                        <b>Email</b>
+                        <input type="email" className="form-control my-3" placeholder="example@gmail.com" onChange={(e) => setEmail(e.target.value)}/>
+                    </div>
+                    <div className="form-group">
+                        <b>Password</b>
+                        <input type="password" className="form-control my-3" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
+                    </div>
+                    <div className="form-group">
+                        <b>Confirm Password</b>
+                        <input type="password" className="form-control my-3" placeholder="Confirm Password" onChange={(e) => setConfirmPassword(e.target.value)}/>
+                    </div>  
+                    <div className="form-group"> 
+                        <button className="form-control btn btn-dark btn-block" onClick={register} disabled={isDisabled()}>Register</button>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

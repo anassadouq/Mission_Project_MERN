@@ -46,7 +46,7 @@ export default function Create() {
                                 </td>
                             </tr>
                             <tr>
-                                <td><b>Is Completed</b></td>
+                                <td><b>Is_Completed</b></td>
                                 <td>
                                     <input type="radio" name="isCompleted" onChange={() => { setIsCompleted("yes") }} className="my-4 mx-1"/>Yes
                                     <input type="radio" name="isCompleted" onChange={() => { setIsCompleted("no") }} className="my-4 mx-1"/>No

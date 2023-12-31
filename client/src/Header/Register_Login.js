@@ -20,11 +20,11 @@ export default function Header(){
                         </li>
                     </ul>
                     <div className="d-flex">
-                        <Link to='/register'>
-                            <button className="btn btn-dark ms-3">Register</button>
-                        </Link>
                         <Link to='/login'>
                             <button className="btn btn-dark ms-3">Login</button>
+                        </Link>
+                        <Link to='/register'>
+                            <button className="btn btn-dark ms-3">Register</button>
                         </Link>
                     </div>
                 </div>
