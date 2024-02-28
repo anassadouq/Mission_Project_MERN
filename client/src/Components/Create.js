@@ -8,17 +8,19 @@ export default function Create() {
     const navigate = useNavigate();
 
     const [description, setDescription] = useState('');
+    const [priority, setPriority] = useState('');
     const [deadline, setDeadline] = useState('');
-    const [isCompleted, setIsCompleted] = useState('');
+    const [status, setStatus] = useState('');
 
     const createMission = (e) => {
         e.preventDefault();
 
-        if (description && deadline && isCompleted !== '') {
+        if (description && priority && deadline && status !== '') {
             Axios.post("http://localhost:3001/create", {
                 description,
+                priority,
                 deadline,
-                isCompleted,
+                status,
             }).then((res) => {
                 navigate("/");
             }).catch(error => {
@@ -40,16 +42,27 @@ export default function Create() {
                                 </td>
                             </tr>
                             <tr>
+                                <td><b>Priority</b></td>
+                                <td>
+                                    <input type="checkbox" name="priority" value="High" onChange={(e) => { setPriority(e.target.value) }} className="my-4 mx-2"/>High
+                                    <input type="checkbox" name="priority" value="Normal" onChange={(e) => { setPriority(e.target.value) }} className="my-4 mx-2"/>Normal
+                                    <input type="checkbox" name="priority" value="Low" onChange={(e) => { setPriority(e.target.value) }} className="my-4 mx-2"/>Low
+                                </td>
+                            </tr>
+                            <tr>
                                 <td><b>Deadline</b></td>
                                 <td>
                                     <input type="date" name="deadline" onChange={(e) => { setDeadline(e.target.value) }} className="my-4 form-control"/>
                                 </td>
                             </tr>
                             <tr>
-                                <td><b>Is_Completed</b></td>
+                                <td><b>Status</b></td>
                                 <td>
-                                    <input type="radio" name="isCompleted" onChange={() => { setIsCompleted("yes") }} className="my-4 mx-1"/>Yes
-                                    <input type="radio" name="isCompleted" onChange={() => { setIsCompleted("no") }} className="my-4 mx-1"/>No
+                                    <input type="checkbox" name="status" value="100" onChange={(e) => { setStatus(e.target.value) }} className="my-4 mx-2"/>100%
+                                    <input type="checkbox" name="status" value="75" onChange={(e) => { setStatus(e.target.value) }} className="my-4 mx-2"/>75%
+                                    <input type="checkbox" name="status" value="50" onChange={(e) => { setStatus(e.target.value) }} className="my-4 mx-2"/>50%
+                                    <input type="checkbox" name="status" value="25" onChange={(e) => { setStatus(e.target.value) }} className="my-4 mx-2"/>25%
+                                    <input type="checkbox" name="status" value="0" onChange={(e) => { setStatus(e.target.value) }} className="my-4 mx-2"/>0%
                                 </td>
                             </tr>
                             <tr>

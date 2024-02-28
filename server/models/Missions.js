@@ -4,10 +4,13 @@ const MissionsSchema = new mongoose.Schema({
     description:{
         type:String,
     },
+    priority:{
+        type:String,
+    },
     deadline:{
         type:Date,
     },    
-    isCompleted:{
+    status:{
         type:String,
     },
 })

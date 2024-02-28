@@ -32,8 +32,8 @@ export default function Register() {
                 <div className="card-body">
                     <h1 className="text-center">Register</h1>
                     <div className="form-group">
-                        <b>First Name</b>
-                        <input type="text" className="form-control my-3" placeholder="First Name" onChange={(e) => setName(e.target.value)}/>
+                        <b>Name</b>
+                        <input type="text" className="form-control my-3" placeholder="Name" onChange={(e) => setName(e.target.value)}/>
                     </div>
                     <div className="form-group">
                         <b>Email</b>

@@ -24,10 +24,9 @@ export default function Liste() {
       });
   };
 
-  // Deadline : "YYYY/MM/DD"
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-CA'); // Anglais Canada
+    return date.toLocaleDateString('en-CA');
   };
 
   const deleteMission = async (_id) => {
@@ -44,39 +43,56 @@ export default function Liste() {
     }
   };
 
+  // Function to determine the style based on the mission priority
+  const getPriorityClass = (priority) => {
+    switch (priority) {
+      case 'High':
+        return 'btn btn-danger rounded-pill';
+      case 'Normal':
+        return 'btn btn-primary rounded-pill';
+      case 'Low':
+        return 'btn btn-success rounded-pill';
+      default:
+        return '';
+    }
+  };
+
   return (
     <div className="container">
-      <Logout/>
+      <Logout />
       <Link to='/create'>
-        <button className="btn btn-warning my-3"><BiAddToQueue/> Mission</button>
+        <button className="btn btn-warning my-3"><BiAddToQueue /> Mission</button>
       </Link>
       <table width="100%" className="text-center">
         <tr>
           <th>Description</th>
+          <th>Priority</th>
           <th>Deadline</th>
-          <th>Completed</th>
+          <th>Status</th>
           <th>Actions</th>
         </tr>
         {mission.map((item, _id) => (
           <tr key={_id}>
             <td>{item.description}</td>
+            <td>
+              <button className={getPriorityClass(item.priority)} style={{ "width": "50%" }}>
+                {item.priority}
+              </button>
+            </td>
             <td>{formatDate(item.deadline)}</td>
             <td>
-              {item.isCompleted === 'yes' ? (
-                <b><span className="text-success">Yes</span></b>
-              ) : (
-                <b><span className="text-danger">No</span></b>
-              )}
+              <input type="range" min="0" max="100" value={item.status}/>
+              <span>{item.status}%</span>
             </td>
             <td>
               <Link to={`/update/${item._id}`} >
-                <button className="btn btn-secondary mx-1"><LuEdit/> Update</button>
-              </Link>                  
-              <button onClick={() => deleteMission(item._id)} className="btn btn-danger mx-1"><RiDeleteBin5Line/> Delete</button>
-            </td>       
+                <button className="btn btn-secondary mx-1"><LuEdit /></button>
+              </Link>
+              <button onClick={() => deleteMission(item._id)} className="btn btn-danger mx-1"><RiDeleteBin5Line /></button>
+            </td>
           </tr>
         ))}
-      </table>  
-    </div> 
+      </table>
+    </div>
   );
 }

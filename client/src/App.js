@@ -22,9 +22,17 @@ export default class App extends Component{
                         </AuthGuard>
                     }/>
 
-                    
-                    <Route path='/create' element={<Create/>}/>
-                    <Route path='/update/:_id' element={<Update/>}/>
+                    <Route path="/create" element={
+                        <AuthGuard>
+                            <Create/>
+                        </AuthGuard>
+                    }/>
+
+                    <Route path="/update/:_id" element={
+                        <AuthGuard>
+                            <Update/>
+                        </AuthGuard>
+                    }/>                    
                 </Routes>
             </Router>
         )
