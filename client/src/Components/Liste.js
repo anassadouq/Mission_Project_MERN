@@ -5,6 +5,7 @@ import { LuEdit } from 'react-icons/lu';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { BiAddToQueue } from 'react-icons/bi';
 import Logout from "../Header/Logout";
+import { format } from 'date-fns';
 
 export default function Liste() {
   const [mission, setMission] = useState([]);
@@ -26,8 +27,8 @@ export default function Liste() {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-CA');
-  };
+    return format(date, 'dd/MM/yyyy');
+  };  
 
   const deleteMission = async (_id) => {
     const confirmDelete = window.confirm('Are you sure you want to delete this mission?');
@@ -58,7 +59,7 @@ export default function Liste() {
   };
 
   return (
-    <div className="container">
+    <div className="mx-2">
       <Logout />
       <Link to='/create'>
         <button className="btn btn-warning my-3"><BiAddToQueue /> Mission</button>
@@ -73,15 +74,21 @@ export default function Liste() {
         </tr>
         {mission.map((item, _id) => (
           <tr key={_id}>
-            <td>{item.description}</td>
             <td>
-              <button className={getPriorityClass(item.priority)} style={{ "width": "50%" }}>
+              {item.status === "100" ? (
+                <s>{item.description}</s>
+              ) : (
+                <label>{item.description}</label>
+              )}
+            </td>
+            <td>
+              <button className={getPriorityClass(item.priority)} style={{ "width": "80%" }}>
                 {item.priority}
               </button>
             </td>
             <td>{formatDate(item.deadline)}</td>
             <td>
-              <input type="range" min="0" max="100" value={item.status}/>
+              <input type="range" min="0" max="100" value={item.status} />
               <span>{item.status}%</span>
             </td>
             <td>
